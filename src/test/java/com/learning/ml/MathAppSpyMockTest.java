@@ -1,12 +1,12 @@
 package com.learning.ml;
 
 import com.learning.ml.service.CalculatorService;
-import com.learning.ml.service.CalculatorServiceImpl;
+import com.learning.ml.service.CalculatorService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-
+// mvn -Dtest=MathAppSpyMockTest test
 public class MathAppSpyMockTest {
 
     // =========================================================
@@ -39,7 +39,7 @@ public class MathAppSpyMockTest {
     void testWithSpy() {
 
         // REAL service object
-        CalculatorService realService = new CalculatorServiceImpl();
+        CalculatorService realService = new CalculatorService();
 
         // Create SPY → wraps real object
         CalculatorService spyService = spy(realService);
