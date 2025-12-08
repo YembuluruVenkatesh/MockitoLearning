@@ -20,4 +20,17 @@ public class UserService {
 
         repo.save(user);
     }
+
+    public void register(String name) {
+        repo.save(new User(name.toUpperCase()));
+    }
+
+    public void delete(long id) {
+        repo.deleteById(id);
+    }
+
+    public void registerTwice(String name) {
+        repo.save(new User(name.toUpperCase()));
+        repo.save(new User(name.toUpperCase()));
+    }
 }
