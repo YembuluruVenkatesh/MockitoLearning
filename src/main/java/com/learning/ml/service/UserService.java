@@ -3,6 +3,8 @@ package com.learning.ml.service;
 import com.learning.ml.entity.User;
 import com.learning.ml.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import com.learning.ml.exception.UserNotFoundException;
+
 
 @Service
 public class UserService {
@@ -32,5 +34,14 @@ public class UserService {
     public void registerTwice(String name) {
         repo.save(new User(name.toUpperCase()));
         repo.save(new User(name.toUpperCase()));
+    }
+
+    public User getUser(long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found: " + id));
+    }
+
+    public void deleteUser(long id) {
+        repo.deleteById(id);  // this is a void method
     }
 }
